@@ -8,3 +8,8 @@ services:
     volumes:
       - .:/www
       - ./docker/php/ini/:/usr/local/etc/php/dev.conf.d/
+
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
