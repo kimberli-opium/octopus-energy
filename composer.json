@@ -1,0 +1,19 @@
+{
+  "name": "octopus-energy/tech-challenge",
+  "autoload": {
+    "psr-4": {
+      "OctopusEnergy\\TechChallenge\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OctopusEnergy\\TechChallenge\\UnitTest\\": "tests/Unit/"
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
