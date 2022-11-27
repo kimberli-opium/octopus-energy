@@ -5,9 +5,16 @@ services:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+    container_name: octopus-app
     volumes:
       - .:/www
       - ./docker/php/ini/:/usr/local/etc/php/dev.conf.d/
+    environment:
+      - DATABASE_HOSTNAME=octopus-mysql
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_DATABASE_NAME=octopus
+      - DATABASE_PORT=3306
 
   web:
     image: nginx
@@ -18,7 +25,9 @@ services:
     build:
       context: .
       dockerfile: docker/mysql/Dockerfile
+    container_name: octopus-mysql
     environment:
+      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=root
     ports:
       - "3318:3306"

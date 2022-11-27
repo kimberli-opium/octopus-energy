@@ -4,3 +4,4 @@
 - docker
 
 ## Set-up
+docker network create octopus

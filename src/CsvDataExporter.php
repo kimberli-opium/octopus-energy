@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OctopusEnergy\TechChallenge;
@@ -10,7 +11,7 @@ class CsvDataExporter
         $data = [];
 
         $csv = fopen($file, 'rb');
-        while (($line = fgetcsv($csv) ) !== false) {
+        while (($line = fgetcsv($csv)) !== false) {
             $data[] = $line;
         }
         fclose($csv);
