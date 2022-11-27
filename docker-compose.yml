@@ -17,9 +17,12 @@ services:
       - DATABASE_PORT=3306
 
   web:
-    image: nginx
+    container_name: octopus-web
+    image: php:8.0-apache
+    volumes:
+      - .:/var/www/html/
     ports:
-      - "8080:80"
+      - "8000:80"
 
   mysql:
     build:
