@@ -58,4 +58,9 @@ class Factory
 
         return $pdoBuilder->buildPdo();
     }
+
+    public function createExportService(): ExportService
+    {
+        return new ExportService($this->getDatabaseConnection());
+    }
 }

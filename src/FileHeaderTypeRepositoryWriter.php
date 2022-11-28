@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OctopusEnergy\TechChallenge;
 
-class FileHeaderTypeRepository extends ElectricityFlowRepository
+class FileHeaderTypeRepositoryWriter extends RepositoryWriter
 {
     public function insert(): void
     {

@@ -4,20 +4,14 @@ namespace OctopusEnergy\TechChallenge;
 
 use PDO;
 
-abstract class ElectricityFlowRepository
+abstract class RepositoryWriter extends AbstractRepository
 {
-    private PDO $pdo;
     private array $data;
 
     public function __construct(PDO $pdo, array $data)
     {
-        $this->pdo = $pdo;
+        parent::__construct($pdo);
         $this->data = $data;
-    }
-
-    public function getPdo(): PDO
-    {
-        return $this->pdo;
     }
 
     public function getData(): array

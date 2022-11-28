@@ -17,12 +17,20 @@ services:
       - DATABASE_PORT=3306
 
   web:
+    build:
+      context: .
+      dockerfile: docker/apache/Dockerfile
     container_name: octopus-web
-    image: php:8.0-apache
     volumes:
       - .:/var/www/html/
     ports:
       - "8000:80"
+    environment:
+      - DATABASE_HOSTNAME=octopus-mysql
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_DATABASE_NAME=octopus
+      - DATABASE_PORT=3306
 
   mysql:
     build:

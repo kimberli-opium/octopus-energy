@@ -18,11 +18,11 @@ class RepositoryLocator
 
     private const HEADER_RECORD = 'ZHV';
 
-    public function locate(array $electricityFlowEntries): ElectricityFlowRepository
+    public function locate(array $electricityFlowEntries): RepositoryWriter
     {
         foreach ($electricityFlowEntries as $electricityFlowEntry) {
             if ($electricityFlowEntry[0] === self::HEADER_RECORD) {
-                return new FileHeaderTypeRepository($this->pdo, $electricityFlowEntry);
+                return new FileHeaderTypeRepositoryWriter($this->pdo, $electricityFlowEntry);
             }
         }
 
