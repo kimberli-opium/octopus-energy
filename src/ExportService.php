@@ -25,8 +25,8 @@ class ExportService
         return (new MpanCoresRepositoryReader($this->pdo))->select();
     }
 
-//    public function exportMeterReadingTypes(): array
-//    {
-//        return (new MpanCoresRepositoryReader($this->pdo))->select();
-//    }
+    public function exportMeterReadingType(): array
+    {
+        return (new MeterReadingTypesRepositoryReader($this->pdo))->select();
+    }
 }

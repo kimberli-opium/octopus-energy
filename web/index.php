@@ -15,6 +15,7 @@ $factory = new Factory();
 $exportService = $factory->createExportService();
 $fileHeader = $exportService->exportFileHeader();
 $mpanCores = $exportService->exportMpanCores();
+$meterReadingTypes = $exportService->exportMeterReadingType();
 ?>
 <h1>ZHV File Header</h1>
 <table>
@@ -60,7 +61,20 @@ $mpanCores = $exportService->exportMpanCores();
     </tr>
     <?php }?>
 </table>
-
+<br>
+<h1>Meter/Reading Types</h1>
+<table>
+    <tr>
+        <th>Meter Id (Serial Number)</th>
+        <th>Reading Type</th>
+    </tr>
+    <?php foreach ($meterReadingTypes as $meterReadingType) { ?>
+        <tr>
+            <td><?php echo $meterReadingType['serial_number']; ?></td>
+            <td><?php echo $meterReadingType['reading_type']; ?></td>
+        </tr>
+    <?php }?>
+</table>
 </body>
 </html>
 <style>
