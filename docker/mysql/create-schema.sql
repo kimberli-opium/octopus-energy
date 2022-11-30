@@ -21,7 +21,10 @@ CREATE TABLE file_header_type (
 DROP TABLE IF EXISTS 026_mpan_cores;
 CREATE TABLE 026_mpan_cores (
     mpan_core numeric(13) not null,
-    bsc_validation_status char(1)  not null
+    bsc_validation_status char(1)  not null,
+    file_id varchar(10) not null,
+    CONSTRAINT fk_file_id FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    PRIMARY KEY (mpan_core)
 );
 
 DROP TABLE IF EXISTS 028_meter_reading_types;
