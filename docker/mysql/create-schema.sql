@@ -43,8 +43,11 @@ CREATE TABLE 030_register_readings (
     register_reading numeric(9,1) not null,
     md_reset_timestamp datetime,
     number_of_md_resets numeric(3),
-    meter_reading_flag boolean,
-    reading_method char(1) not null
+    meter_reading_flag char(1),
+    reading_method char(1) not null,
+    file_id varchar(10) not null,
+    CONSTRAINT fk_registerReadings_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    PRIMARY KEY (meter_register_id)
 );
 
 DROP TABLE IF EXISTS file_footer_type;
