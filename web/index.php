@@ -16,6 +16,7 @@ $exportService = $factory->createExportService();
 $fileHeader = $exportService->exportFileHeader();
 $mpanCores = $exportService->exportMpanCores();
 $meterReadingTypes = $exportService->exportMeterReadingType();
+$registerReadings = $exportService->exportRegisterReadings();
 ?>
 <h1>ZHV File Header</h1>
 <table>
@@ -72,6 +73,30 @@ $meterReadingTypes = $exportService->exportMeterReadingType();
         <tr>
             <td><?php echo $meterReadingType['serial_number']; ?></td>
             <td><?php echo $meterReadingType['reading_type']; ?></td>
+        </tr>
+    <?php }?>
+</table>
+<h1>
+    Register Readings</h1>
+<table>
+    <tr>
+        <th>Meter Register Id</th>
+        <th>Reading Date & Time</th>
+        <th>Register Reading</th>
+        <th>MD Reset Date & Time</th>
+        <th>Number of MD Resets</th>
+        <th>Meter Reading Flag</th>
+        <th>Reading Method</th>
+    </tr>
+    <?php foreach ($registerReadings as $registerReading) { ?>
+        <tr>
+            <td><?php echo $registerReading['meter_register_id']; ?></td>
+            <td><?php echo $registerReading['reading_timestamp']; ?></td>
+            <td><?php echo $registerReading['register_reading']; ?></td>
+            <td><?php echo $registerReading['md_reset_timestamp']; ?></td>
+            <td><?php echo $registerReading['number_of_md_resets']; ?></td>
+            <td><?php echo $registerReading['meter_reading_flag']; ?></td>
+            <td><?php echo $registerReading['reading_method']; ?></td>
         </tr>
     <?php }?>
 </table>

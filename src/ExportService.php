@@ -29,4 +29,9 @@ class ExportService
     {
         return (new MeterReadingTypesRepositoryReader($this->pdo))->select();
     }
+
+    public function exportRegisterReadings(): array
+    {
+        return (new RegisterReadingsRepositoryReader($this->pdo))->select();
+    }
 }
