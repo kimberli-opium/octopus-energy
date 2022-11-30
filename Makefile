@@ -16,5 +16,8 @@ composer-update: ## update composer dependencies for linux
 	$(DOCKER_RUN_ONCE_LINUX_WITH_SSH_AGENT) composer update
 endif
 
-cs:
-	${DOCKER_RUN_ONCE} tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
+up: ## start all docker containers (mysql, php, apache)
+	docker-compose up -d
+
+import: ## run import script to import data.csv into the database
+	$(DOCKER_RUN_ONCE) php run.php
