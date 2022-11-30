@@ -19,4 +19,14 @@ class ExportService
     {
         return (new FileHeaderTypeRepositoryReader($this->pdo))->select();
     }
+
+    public function exportMpanCores(): array
+    {
+        return (new MpanCoresRepositoryReader($this->pdo))->select();
+    }
+
+//    public function exportMeterReadingTypes(): array
+//    {
+//        return (new MpanCoresRepositoryReader($this->pdo))->select();
+//    }
 }

@@ -5,7 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-<p>hi!</p>
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -15,8 +14,9 @@ $factory = new Factory();
 
 $exportService = $factory->createExportService();
 $fileHeader = $exportService->exportFileHeader();
+$mpanCores = $exportService->exportMpanCores();
 ?>
-
+<h1>ZHV File Header</h1>
 <table>
     <tr>
         <th>File Identifier</th>
@@ -46,7 +46,25 @@ $fileHeader = $exportService->exportFileHeader();
         <td><?php echo $fileHeader[0]['test_data_flag']; ?></td>
     </tr>
 </table>
+<br>
+<h1>MPAN Cores</h1>
+<table>
+    <tr>
+        <th>MPAN Core</th>
+        <th>BSC Validation Status</th>
+    </tr>
+    <?php foreach ($mpanCores as $mpanCore) { ?>
+    <tr>
+        <td><?php echo $mpanCore['mpan_core']; ?></td>
+        <td><?php echo $mpanCore['bsc_validation_status']; ?></td>
+    </tr>
+    <?php }?>
+</table>
 
 </body>
 </html>
-
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
