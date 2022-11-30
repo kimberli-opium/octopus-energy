@@ -18,6 +18,7 @@ class RepositoryLocator
 
     private const HEADER_RECORD = 'ZHV';
     private const MPAN_CORES = '026';
+    private const METER_READING_TYPES = '028';
 
     public function locate(array $electricityFlowEntries): RepositoryWriter
     {
@@ -29,6 +30,9 @@ class RepositoryLocator
             }
             if ($electricityFlowEntry[0] === self::MPAN_CORES) {
                 return new MpanCoresRepositoryWriter($this->pdo, $electricityFlowEntry, $fileId);
+            }
+            if ($electricityFlowEntry[0] === self::METER_READING_TYPES) {
+                return new MeterReadingTypesRepositoryWriter($this->pdo, $electricityFlowEntry, $fileId);
             }
         }
 

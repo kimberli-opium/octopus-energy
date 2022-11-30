@@ -23,14 +23,17 @@ CREATE TABLE 026_mpan_cores (
     mpan_core numeric(13) not null,
     bsc_validation_status char(1)  not null,
     file_id varchar(10) not null,
-    CONSTRAINT fk_file_id FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    CONSTRAINT fk_mpanCores_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
     PRIMARY KEY (mpan_core)
 );
 
 DROP TABLE IF EXISTS 028_meter_reading_types;
 CREATE TABLE 028_meter_reading_types (
     serial_number varchar(10) not null,
-    reading_type char(1) not null
+    reading_type char(1) not null,
+    file_id varchar(10) not null,
+    CONSTRAINT fk_meterReadingTypes_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    PRIMARY KEY (serial_number)
 );
 
 DROP TABLE IF EXISTS 030_register_readings;
