@@ -23,7 +23,7 @@ CREATE TABLE 026_mpan_cores (
     mpan_core numeric(13) not null,
     bsc_validation_status char(1)  not null,
     file_id varchar(10) not null,
-    CONSTRAINT fk_mpanCores_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    CONSTRAINT fk_mpanCores_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id) ON DELETE CASCADE ON UPDATE RESTRICT,
     PRIMARY KEY (mpan_core)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE 028_meter_reading_types (
     serial_number varchar(10) not null,
     reading_type char(1) not null,
     file_id varchar(10) not null,
-    CONSTRAINT fk_meterReadingTypes_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
+    CONSTRAINT fk_meterReadingTypes_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id) ON DELETE CASCADE ON UPDATE RESTRICT,
     PRIMARY KEY (serial_number)
 );
 
@@ -46,15 +46,5 @@ CREATE TABLE 030_register_readings (
     meter_reading_flag char(1),
     reading_method char(1) not null,
     file_id varchar(10) not null,
-    CONSTRAINT fk_registerReadings_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id),
-    PRIMARY KEY (meter_register_id)
-);
-
-DROP TABLE IF EXISTS file_footer_type;
-CREATE TABLE file_footer_type (
-    file_id varchar(10) not null,
-    total_group_count int(10) not null,
-    checksum int(10),
-    flow_count int(8),
-    file_completion_timestamp datetime
+    CONSTRAINT fk_registerReadings_fileId FOREIGN KEY (file_id) REFERENCES file_header_type(file_id) ON DELETE CASCADE ON UPDATE RESTRICT
 );

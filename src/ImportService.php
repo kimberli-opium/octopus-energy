@@ -23,7 +23,12 @@ class ImportService
     public function run(): void
     {
         $electricityFlowEntries = $this->csvDataExporter->export($this->file);
-        $repository = $this->repositoryLocator->locate($electricityFlowEntries);
-        $repository->insert();
+
+        foreach ($electricityFlowEntries as $electricityFlowEntry) {
+            $fileId = (string)$electricityFlowEntries[0][1];
+
+            $repository = $this->repositoryLocator->locate($electricityFlowEntry, $fileId);
+            $repository->insert();
+        }
     }
 }
